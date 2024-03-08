@@ -2,16 +2,20 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
+const ALCHEMY_SEPOLIA_API_KEY_URL = process.env.ALCHEMY_SEPOLIA_API_KEY_URL;
+const ALCHEMY_MUMBAI_API_KEY_URL = process.env.ALCHEMY_MUMBAI_API_KEY_URL;
+const ACCOUNT= `0x${process.env.ACCOUNT}`
+
 module.exports = {
   solidity: "0.8.18",
   networks: {
     mumbai: {
-      url: 'https://rpc-mumbai.maticvigil.com',
-      accounts: [process.env.PRIVATE_KEY],
+      url: ALCHEMY_MUMBAI_API_KEY_URL,
+      accounts: [ACCOUNT],
     },
-    goerli: {
-      url: 'https://ethereum-goerli.publicnode.com',
-      accounts: [process.env.PRIVATE_KEY],
+    sepolia: {
+      url: ALCHEMY_SEPOLIA_API_KEY_URL,
+      accounts: [ACCOUNT]
     },
   }
 };
